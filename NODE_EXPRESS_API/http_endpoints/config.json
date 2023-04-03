@@ -4,7 +4,7 @@
         "http_method": "GET",
         "function_name": "test",
         "validation_method": "SECRET_AS_QUERY_PARAM",
-        "secret_name": "test2",
+        "secret_name": "test",
         "respond_result": true,
         "fetch_custom_user_data": false,
         "create_user_on_auth": false,
