@@ -2,7 +2,7 @@ GET http://localhost:5002/users
 
 ###
 
-GET http://localhost:5002/users/64287d167287273b4bfcd995
+GET http://localhost:5002/users/64289ab37680b0b8d8b2d5a6
 
 ###
 
@@ -10,18 +10,18 @@ POST http://localhost:5002/users
 Content-Type: application/json
 
 {
-    "firstName": "asd",
-    "lastName": "test",
-    "age": 29
+    "firstName": "Nicolo",
+    "lastName": "Junior",
+    "age": 21
 }
 
 ###
 
-DELETE http://localhost:5002/users/64287d167287273b4bfcd995
+DELETE http://localhost:5002/users/642895ad66cfa162cf1c401c
 
 ###
 
-PATCH http://localhost:5002/users/64287d2c7287273b4bfcd998
+PATCH http://localhost:5002/users/642acd6220240d6d0a008d57
 Content-Type: application/json
 
-{"firstName": "LOLLO"}
+{"lastName": "Piccolo"}
