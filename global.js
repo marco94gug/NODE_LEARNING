@@ -1,3 +1,7 @@
+const fs = require("fs");
+
+let answerStream;
+
 process.stdout.write("Hello   \n\n");
 
 const questions = [
@@ -6,29 +10,45 @@ const questions = [
   "What is your preferred programming language?",
 ];
 
-const answers = [];
+let answers = [];
 
 const ask = (i = 0, input) => {
   process.stdout.write(`\n\n\n ${questions[i]}`);
   process.stdout.write(` > `);
 };
 
+process.stdin.once("data", (data) => {
+  let name = data.toString().trim();
+  let fileName = `./${name}.md`;
+  if (fs.existsSync(fileName)) {
+    fs.unlinkSync(fileName);
+  }
+  answerStream = fs.createWriteStream(fileName);
+  answerStream.write(`Question Answers for ${name}\n============\n`);
+});
+
 //eseguo la funzione che fa partire la prima domanda
 ask();
 
 //ascolto un evento input sul terminale
 process.stdin.on("data", (data) => {
-  const inputValue = data.toString().trim();
-  answers.push(inputValue);
+  let answer = data.toString().trim();
 
-  if (answers.length < questions.length) {
-    ask(answers.length, inputValue);
-  } else {
-    process.exit();
-  }
+  answerStream.write(`Question: ${questions[answers.length]}\n`);
+
+  answerStream.write(`Answer: ${answer}\n`, function () {
+    if (answers.length < questions.length) {
+      ask(answers.length, answer);
+    } else {
+      process.exit();
+    }
+  });
+
+  answers.push(answer);
 });
 
 process.on("exit", () => {
+  answerStream.close();
   process.stdout.write("\n\n\n\n");
   process.stdout.write(
     `Go ${answers[1]} ${answers[0]} you can finish writing ${answers[2]} later`
