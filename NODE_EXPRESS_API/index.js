@@ -17,6 +17,8 @@ const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Server Started"));
 
+console.log(process.env.DATABASE_URL);
+
 const PORT = 5002;
 
 app.use(bodyParser.json());
