@@ -27,6 +27,8 @@ app.use("/users", usersRoutes);
 
 app.get("/", (req, res) => res.send("Hello from Homepage"));
 
+app.get("/test", (req, res) => res.send(process.env.DATABASE_URL));
+
 app.listen(PORT, () => {
   console.log(`Server running on port: http://localhost:${PORT}`);
 });

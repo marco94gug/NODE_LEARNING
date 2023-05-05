@@ -1,8 +1,6 @@
 import { nanoid } from "nanoid";
 import User from "../Models/User.model.js";
 
-// let users = [];
-
 export const createUser = async (req, res) => {
   const user = new User({
     firstName: req.body.firstName,
@@ -18,13 +16,6 @@ export const createUser = async (req, res) => {
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
-  // const user = req.body;
-
-  // const userWithId = { ...user, id: nanoid(12) };
-
-  // users.push(userWithId);
-
-  // res.send(userWithId);
 };
 
 export const getUsers = async (req, res) => {
@@ -51,11 +42,6 @@ export const deleteUser = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-  // const { id } = req.params;
-
-  // users = users.filter((user) => user.id !== id);
-
-  // res.send(`User with the id ${id} deleted from the database`);
 };
 
 export const updateUser = async (req, res) => {

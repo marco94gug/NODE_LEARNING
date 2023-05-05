@@ -14,7 +14,6 @@ router.get("/", getUsers);
 
 router.post("/", createUser);
 
-// /users/2 => req.params { id: 2 }
 router.get("/:id", getUser, (req, res) => {
   res.json(res.user);
 });
