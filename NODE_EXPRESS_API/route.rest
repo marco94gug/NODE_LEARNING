@@ -4,6 +4,9 @@ GET http://localhost:5002/users
 
 GET http://localhost:5002/users/64289ab37680b0b8d8b2d5a6
 
+###
+
+GET http://localhost:5002/users/test
 
 ###
 POST http://localhost:5002/users
