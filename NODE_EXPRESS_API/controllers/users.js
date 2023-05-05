@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import User from "../Models/User.model.js";
 
-let users = [];
+// let users = [];
 
 export const createUser = async (req, res) => {
   const user = new User({
