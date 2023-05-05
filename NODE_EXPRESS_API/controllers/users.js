@@ -18,14 +18,13 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const getUsers = async (req, res) => {
+export const getUsers = async (_, res) => {
   try {
     const users = await User.find();
     res.send(users);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-  // res.send(users);
 };
 
 export const getUser = (req, res) => {
@@ -35,7 +34,7 @@ export const getUser = (req, res) => {
   res.send(foundUser);
 };
 
-export const deleteUser = async (req, res) => {
+export const deleteUser = async (_, res) => {
   try {
     await res.user.deleteOne();
     res.json({ message: "Delete User" });
@@ -46,11 +45,10 @@ export const deleteUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   const { firstName, lastName, age } = req.body;
-  const userToBeUpdated = res.user;
 
-  if (firstName) userToBeUpdated.firstName = firstName;
-  if (lastName) userToBeUpdated.lastName = lastName;
-  if (age) userToBeUpdated.age = age;
+  if (firstName) res.user.firstName = firstName;
+  if (lastName) res.user.lastName = lastName;
+  if (age) res.user.age = age;
 
   try {
     const updatedUser = await res.user.save();
