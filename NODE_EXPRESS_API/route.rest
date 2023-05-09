@@ -27,4 +27,4 @@ DELETE http://localhost:5002/users/6454f3329d2af107136b4226
 PATCH http://localhost:5002/users/642acd6220240d6d0a008d57
 Content-Type: application/json
 
-{"lastName": "Piccolo"}
+{"lastName": "LOL"}
