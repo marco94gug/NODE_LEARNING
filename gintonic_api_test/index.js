@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import drinkRoutes from "./routes/drinks.js";
+import categoryRoutes from "./routes/category.js";
+import searchRoutes from "./routes/search.js";
 
 dotenv.config();
 const app = express();
@@ -21,6 +23,10 @@ app.use(express.json());
 app.get("/", (req, res) => res.send("Hello from HomePage!"));
 
 app.use("/drinks", drinkRoutes);
+
+app.use("/category", categoryRoutes);
+
+app.use("/search", searchRoutes);
 
 const PORT = process.env.PORT;
 
