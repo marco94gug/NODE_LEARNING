@@ -1,52 +1,27 @@
-const fs = require("fs");
-const dotenv = require("dotenv");
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+import drinkRoutes from "./routes/drinks.js";
 
 dotenv.config();
+const app = express();
 
-const path = "/search.php?s=";
+mongoose.connect(process.env.DATABASE_URL, {
+  dbName: "gintonicApi",
+  user: process.env.MONGODB_USER,
+  pass: process.env.MONGODB_PSW,
+});
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("Server Started!"));
 
-async function getInfo() {
-  const res = await fetch(process.env.BASE_URL + path, {
-    headers: {
-      "Content-type": "application/json",
-      "X-RapidAPI-Key": process.env.API_SECRET,
-      "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
-    },
-  });
+app.use(express.json());
 
-  const response = await res.json();
+app.get("/", (req, res) => res.send("Hello from HomePage!"));
 
-  let responseEdited = [];
+app.use("/drinks", drinkRoutes);
 
-  for (const drink of response.drinks) {
-    let ingredients = [];
-    for (let i = 0; i < Object.keys(drink).length; i++) {
-      if (
-        drink[`strIngredient${i + 1}`] !== null ||
-        drink[`strMeasure${i + 1}`] !== null
-      ) {
-        ingredients.push({
-          ingredient: drink[`strIngredient${i + 1}`],
-          measure: drink[`strMeasure${i + 1}`],
-        });
-      } else {
-        break;
-      }
-    }
-    for (let i = 0; i < Object.keys(drink).length; i++) {
-      delete drink[`strIngredient${i + 1}`];
-      delete drink[`strMeasure${i + 1}`];
-    }
+const PORT = process.env.PORT;
 
-    responseEdited.push({ ...drink, ingredients });
-  }
-
-  fs.writeFile("gintonic_list.json", JSON.stringify(responseEdited), (err) => {
-    if (err) throw err;
-    else {
-      console.log("file Donwloaded!");
-    }
-  });
-}
-
-getInfo();
+app.listen(PORT);
