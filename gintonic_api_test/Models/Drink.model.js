@@ -94,4 +94,7 @@ const DrinkSchema = new mongoose.Schema({
 
 const Drink = mongoose.model("drink", DrinkSchema);
 
-export default Drink;
+const TopDrink = mongoose.model("topdrink", DrinkSchema);
+const LatestDrink = mongoose.model("latest", DrinkSchema);
+
+export { Drink, TopDrink, LatestDrink };

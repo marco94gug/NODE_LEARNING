@@ -5,6 +5,10 @@ import dotenv from "dotenv";
 import drinkRoutes from "./routes/drinks.js";
 import categoryRoutes from "./routes/category.js";
 import searchRoutes from "./routes/search.js";
+import {
+  getLatestDrinks,
+  getTopDrinks,
+} from "./controllers/drink.controllers.js";
 
 dotenv.config();
 const app = express();
@@ -27,6 +31,10 @@ app.use("/drinks", drinkRoutes);
 app.use("/category", categoryRoutes);
 
 app.use("/search", searchRoutes);
+
+app.get("/popular", getTopDrinks);
+
+app.get("/latest", getLatestDrinks);
 
 const PORT = process.env.PORT;
 

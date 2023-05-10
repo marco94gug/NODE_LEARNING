@@ -1,4 +1,4 @@
-import Drink from "../Models/Drink.model.js";
+import { Drink, LatestDrink, TopDrink } from "../Models/Drink.model.js";
 
 export const getDrinks = async (_, res) => {
   try {
@@ -9,13 +9,19 @@ export const getDrinks = async (_, res) => {
   }
 };
 
-export const createDrink = async (req, res) => {
-  const drink = new Drink(req.body);
-
+export const getTopDrinks = async (_, res) => {
   try {
-    const newDrink = await drink.save();
+    const topDrinks = await TopDrink.find();
+    res.status(200).send(topDrinks);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-    res.status(200).json(newDrink);
+export const getLatestDrinks = async (_, res) => {
+  try {
+    const latestDrinks = await LatestDrink.find();
+    res.status(200).send(latestDrinks);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
