@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import drinkRoutes from "./routes/drinks.js";
 import categoryRoutes from "./routes/category.js";
@@ -39,6 +40,8 @@ const setHeadersMiddleware = (req, res, next) => {
 app.use(express.json());
 
 app.get("/", (_, res) => res.send("Hello from HomePage!"));
+
+app.options("*", cors());
 
 app.use("/drinks", setHeadersMiddleware, drinkRoutes);
 
