@@ -23,35 +23,35 @@ const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Server Started!"));
 
-const setHeadersMiddleware = (req, res, next) => {
-  // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", "*");
+// const setHeadersMiddleware = (req, res, next) => {
+//   // Website you wish to allow to connect
+//   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  // Request methods you wish to allow
-  res.setHeader("Access-Control-Allow-Methods", "*");
+//   // Request methods you wish to allow
+//   res.setHeader("Access-Control-Allow-Methods", "*");
 
-  // Request headers you wish to allow
-  res.setHeader("Access-Control-Allow-Headers", "*");
+//   // Request headers you wish to allow
+//   res.setHeader("Access-Control-Allow-Headers", "*");
 
-  // Pass to next layer of middleware
-  next();
-};
+//   // Pass to next layer of middleware
+//   next();
+// };
 
 app.use(express.json());
 
 app.get("/", (_, res) => res.send("Hello from HomePage!"));
 
-app.options("*", cors());
+app.use(cors());
 
-app.use("/drinks", setHeadersMiddleware, drinkRoutes);
+app.use("/drinks", drinkRoutes);
 
-app.use("/category", setHeadersMiddleware, categoryRoutes);
+app.use("/category", categoryRoutes);
 
-app.use("/search", setHeadersMiddleware, searchRoutes);
+app.use("/search", searchRoutes);
 
-app.get("/popular", setHeadersMiddleware, getTopDrinks);
+app.get("/popular", getTopDrinks);
 
-app.get("/latest", setHeadersMiddleware, getLatestDrinks);
+app.get("/latest", getLatestDrinks);
 
 const PORT = process.env.PORT;
 
