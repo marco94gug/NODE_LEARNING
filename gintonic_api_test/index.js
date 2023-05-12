@@ -41,7 +41,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["http://localhost/", "https://the-gintonic-project.vercel.app"],
+    origin: ["http://localhost", "https://the-gintonic-project.vercel.app"],
   })
 );
 
