@@ -39,12 +39,24 @@ db.once("open", () => console.log("Server Started!"));
 
 app.use(express.json());
 
+// corsOptions = {
+//   origin: function (origin, callback) {
+//     if (origin.endsWith("marco94gug.vercel.app")) {
+//       callback(error, [origin])
+//     }
+//   }
+// }
+
 app.use(
   cors({
     origin: [
       "http://localhost:3000",
       "https://the-gintonic-project.vercel.app",
-      `https://${/([A-Za-z0-9]+(-[A-Za-z0-9]+)+)-/i}marco94gug.vercel.app`,
+      function (origin, callback) {
+        if (origin.endsWith("marco94gug.vercel.app")) {
+          callback(error, [origin]);
+        }
+      },
     ],
   })
 );
