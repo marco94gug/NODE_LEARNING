@@ -39,9 +39,17 @@ db.once("open", () => console.log("Server Started!"));
 
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost/",
+      "https://the-gintonic-project.vercel.app",
+      "*.marco94gug.vercel.app",
+    ],
+  })
+);
 
-app.options("*", cors());
+// app.options("*", cors());
 
 app.get("/", (_, res) => res.send("Hello from HomePage!"));
 
