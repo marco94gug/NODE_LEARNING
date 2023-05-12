@@ -39,7 +39,7 @@ db.once("open", () => console.log("Server Started!"));
 
 app.use(express.json());
 
-app.options("*", cors());
+app.use("*", cors());
 
 app.get("/", (_, res) => res.send("Hello from HomePage!"));
 
