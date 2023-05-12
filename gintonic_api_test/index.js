@@ -39,9 +39,9 @@ db.once("open", () => console.log("Server Started!"));
 
 app.use(express.json());
 
-app.get("/", (_, res) => res.send("Hello from HomePage!"));
+app.options("*", cors());
 
-app.use(cors());
+app.get("/", (_, res) => res.send("Hello from HomePage!"));
 
 app.use("/drinks", drinkRoutes);
 
