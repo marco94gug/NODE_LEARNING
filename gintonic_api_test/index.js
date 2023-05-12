@@ -44,7 +44,8 @@ app.use(
     origin: [
       "http://localhost/",
       "https://the-gintonic-project.vercel.app",
-      "*.marco94gug.vercel.app",
+      "0.0.0.0",
+      `^(https?://(?:.+\.)?marco94gug\.vercel(?::\d{1,5})?)$`,
     ],
   })
 );
