@@ -23,29 +23,7 @@ const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Server Started!"));
 
-// const setHeadersMiddleware = (req, res, next) => {
-//   // Website you wish to allow to connect
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-
-//   // Request methods you wish to allow
-//   res.setHeader("Access-Control-Allow-Methods", "*");
-
-//   // Request headers you wish to allow
-//   res.setHeader("Access-Control-Allow-Headers", "*");
-
-//   // Pass to next layer of middleware
-//   next();
-// };
-
 app.use(express.json());
-
-// corsOptions = {
-//   origin: function (origin, callback) {
-//     if (origin.endsWith("marco94gug.vercel.app")) {
-//       callback(error, [origin])
-//     }
-//   }
-// }
 
 app.use(
   cors({
@@ -60,8 +38,6 @@ app.use(
     ],
   })
 );
-
-// app.options("*", cors());
 
 app.get("/", (_, res) => res.send("Hello from HomePage!"));
 

@@ -1,0 +1,18 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Helvetica", arial, sans-serif;
+  color: rgb(17, 17, 17);
+}
+
+img {
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.465);
+}

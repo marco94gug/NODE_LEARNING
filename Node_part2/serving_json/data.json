@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Pippo",
+    "age": 13,
+    "test": true
+  },
+  {
+    "name": "Pluto",
+    "age": 18,
+    "test": false
+  },
+  {
+    "name": "Francesco",
+    "age": 21,
+    "test": true
+  }
+]
