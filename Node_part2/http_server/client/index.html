@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Ammazza</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <div class="logo">
+        <img src="./img/amazon-64.png" />
+        <h3>mmazza</h3>
+        <p>Look that price!</p>
+      </div>
+      <div class="nav-cart">
+        <p class="items">0 items</p>
+        <img class="cart" src="./img/cart.png" alt="" />
+      </div>
+    </nav>
+    <div class="cart-list">
+      <div class="products-list"></div>
+      <!-- <button class="checkout">Checkout</button> -->
+    </div>
+    <main class="main-body">
+      <section class="sidebar">
+        <h4 class="sidebar-title">All Categories</h4>
+        <ul class="categories-ul"></ul>
+      </section>
+      <section class="main-section">
+        <div class="payment-section">
+          <div class="button-container">
+            <button class="back-btn">
+              <img class="back-btn-img" src="./img/right.png" />
+            </button>
+          </div>
+          <div class="body-payment-section">
+            <div class="container-list">
+              <div class="payment-list"></div>
+              <div class="subtotal">
+                <h4>Subtotal: 4milaDollari</h4>
+              </div>
+            </div>
+            <div class="payment-form">
+              <h3 class="payment-title">Enter your payment details</h3>
+
+              <form id="payment" class="pay-form">
+                <div class="input-container">
+                  <div class="email-input">
+                    <label for="email">Email</label>
+                    <input
+                      name="email"
+                      type="email"
+                      id="email"
+                      placeholder="sample@email.com"
+                    />
+                  </div>
+                  <div class="card-form">
+                    <label for="cardnumber">Card detail</label>
+                    <input
+                      name="cardnumer"
+                      id="cardnumber"
+                      type="tel"
+                      minlength="13"
+                      maxlength="16"
+                      pattern="[0-9]*"
+                      inputmode="numeric"
+                      placeholder="1234 5678 9012 3456"
+                    />
+                    <div class="data-cvc">
+                      <input name="month" id="month" type="month" />
+                      <input
+                        name="cvc"
+                        id="cvc"
+                        type="tel"
+                        minlength="3"
+                        maxlength="4"
+                        pattern="[0-9]*"
+                        inputmode="numeric"
+                        placeholder="cvc"
+                      />
+                    </div>
+                    <div class="user-details">
+                      <label for="name">Name card holder</label>
+                      <input
+                        name="name"
+                        type="text"
+                        id="name"
+                        placeholder="Your name..."
+                      />
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn-pay">Pay</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="thankyou-page">
+          <div class="modal-window">
+            <h1>THANK YOU</h1>
+            <h4>Thanks for your purchase!</h4>
+            <p>Your order will be delivered in 2-4 business days</p>
+            <div class="buyproducts"></div>
+            <button class="back">Back to Shop</button>
+          </div>
+        </div>
+        <h2>Our Collections:</h2>
+        <div class="buttons"></div>
+        <div class="products"></div>
+      </section>
+      <div class="loader"><img src="./img/loader.gif" /></div>
+    </main>
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>
