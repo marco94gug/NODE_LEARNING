@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import compression from "compression";
 
 import drinkRoutes from "./routes/drinks.js";
 import categoryRoutes from "./routes/category.js";
@@ -23,6 +24,7 @@ const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Server Started!"));
 
+app.use(compression());
 app.use(express.json());
 
 app.use(
