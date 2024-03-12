@@ -27,17 +27,27 @@ db.once("open", () => console.log("Server Started!"));
 app.use(compression());
 app.use(express.json());
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://the-gintonic-project.vercel.app",
+  function (origin, callback) {
+    if (origin.endsWith("marco94gug.vercel.app")) {
+      callback(error, [origin]);
+    }
+  },
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://the-gintonic-project.vercel.app",
-      function (origin, callback) {
-        if (origin.endsWith("marco94gug.vercel.app")) {
-          callback(error, [origin]);
-        }
-      },
-    ],
+    origin: allowedOrigins,
+  })
+);
+
+// handle preflight requests
+app.options(
+  "*",
+  cors({
+    origin: allowedOrigins,
   })
 );
 
